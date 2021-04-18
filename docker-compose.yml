@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "air"
+    tty: true
+    stdin_open: true
+    command: "air"
+    volumes:
+      - ./app:/go/src/app
+    ports:
+      - 8080:8080
+    security_opt:
+      - apparmor:unconfined
+    cap_add:
+      - SYS_PTRACE
